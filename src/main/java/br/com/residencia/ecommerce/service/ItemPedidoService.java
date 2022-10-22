@@ -27,7 +27,8 @@ public class ItemPedidoService {
 	}
 	
 	public ItemPedido getItemPedidoById(Integer id) {
-		return itemPedidoRepository.findById(id).orElse(null);
+		//return itemPedidoRepository.findById(id).orElse(null);
+		return itemPedidoRepository.findById(id).get();
 	}
 	
 	public ItemPedido saveItemPedido(ItemPedido itemPedido) {

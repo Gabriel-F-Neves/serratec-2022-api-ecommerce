@@ -23,7 +23,8 @@ public class EnderecoService {
 	}
 	
 	public Endereco getEnderecoById(Integer id) {
-		return enderecoRepository.findById(id).orElse(null);
+		//return enderecoRepository.findById(id).orElse(null);
+		return enderecoRepository.findById(id).get();
 	}
 	
 	public ConsultaCepDTO consultaCepApiExterna(String cep) {

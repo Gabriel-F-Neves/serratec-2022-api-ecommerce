@@ -20,7 +20,8 @@ public class ProdutoService {
 	}
 	
 	public Produto getProdutoById(Integer id) {
-		return produtoRepository.findById(id).orElse(null);
+		//return produtoRepository.findById(id).orElse(null);
+		return produtoRepository.findById(id).get();
 	}
 	
 	public Produto saveProduto(Produto produto) {

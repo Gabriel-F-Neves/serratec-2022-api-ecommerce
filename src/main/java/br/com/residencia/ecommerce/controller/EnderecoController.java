@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.residencia.ecommerce.dto.ConsultaCepDTO;
 import br.com.residencia.ecommerce.entity.Endereco;
+import br.com.residencia.ecommerce.exception.NoSuchElementFoundException;
 import br.com.residencia.ecommerce.service.EnderecoService;
 
 @RestController
@@ -29,7 +30,20 @@ public class EnderecoController {
 		return new ResponseEntity<>(enderecoService.getAllEnderecos(),
 				HttpStatus.OK);
 	}
-
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Endereco> getEnderecoById(@PathVariable Integer id) {
+		Endereco endereco = new Endereco();
+		
+		try {
+			endereco = enderecoService.getEnderecoById(id);
+			return new ResponseEntity<>(endereco, HttpStatus.OK);			
+		}catch(Exception ex) {
+			throw new NoSuchElementFoundException("Não foi encontrado resultado com o id " + id);
+		}
+	}
+	
+	/*
 	@GetMapping("/{id}")
 	public ResponseEntity<Endereco> getEnderecoById(@PathVariable Integer id) {
 		Endereco endereco = enderecoService.getEnderecoById(id);
@@ -40,6 +54,7 @@ public class EnderecoController {
 			return new ResponseEntity<>(endereco,
 					HttpStatus.NOT_FOUND);
 	}
+	*/
 	
 	@GetMapping("/consulta-cep/{cep}")
 	public ResponseEntity<ConsultaCepDTO> consultaCepApiExterna(@PathVariable String cep) {

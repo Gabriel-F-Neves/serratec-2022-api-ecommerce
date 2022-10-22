@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.residencia.ecommerce.entity.Categoria;
+import br.com.residencia.ecommerce.exception.NoSuchElementFoundException;
 import br.com.residencia.ecommerce.service.CategoriaService;
 
 
@@ -31,8 +32,19 @@ public class CategoriaController {
 				HttpStatus.OK);
 	}
 	
-
-
+	@GetMapping("/{id}")
+	public ResponseEntity<Categoria> getCategoriaById(@PathVariable Integer id) {
+		Categoria categoria = new Categoria();
+		
+		try {
+			categoria = categoriaService.getCategoriaById(id);
+			return new ResponseEntity<>(categoria, HttpStatus.OK);			
+		}catch(Exception ex) {
+			throw new NoSuchElementFoundException("Não foi encontrado resultado com o id " + id);
+		}
+	}
+	
+	/*
 	@GetMapping("/{id}")
 	public ResponseEntity<Categoria> getCategoriaById(@PathVariable Integer id) {
 		Categoria categoria = categoriaService.getCategoriaById(id);
@@ -43,6 +55,7 @@ public class CategoriaController {
 			return new ResponseEntity<>(categoria,
 					HttpStatus.NOT_FOUND);
 	}
+	*/
 	
 	@PostMapping
 	public ResponseEntity<Categoria> saveCategoria(@RequestBody Categoria categoria) {

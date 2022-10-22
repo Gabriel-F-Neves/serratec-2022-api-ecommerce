@@ -20,8 +20,8 @@ public class ClienteService {
 	}
 	
 	public Cliente getClienteById(Integer id) {
-		return clienteRepository.findById(id).orElse(null);
-		
+		//return clienteRepository.findById(id).orElse(null);
+		return clienteRepository.findById(id).get();
 	}
 	
 	public Cliente saveCliente(Cliente cliente) {

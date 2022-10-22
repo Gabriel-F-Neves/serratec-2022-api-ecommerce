@@ -18,8 +18,8 @@ public class CategoriaService {
 	}
 	
 	public Categoria getCategoriaById(Integer id) {
-		return categoriaRepository.findById(id).orElse(null);
-		
+		//return categoriaRepository.findById(id).orElse(null);
+		return categoriaRepository.findById(id).get();
 	}
 	
 	public Categoria saveCategoria(Categoria categoria) {

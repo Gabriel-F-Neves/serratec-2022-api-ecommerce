@@ -1,4 +1,4 @@
-/*package br.com.residencia.ecommerce.service;
+package br.com.residencia.ecommerce.service;
 
 import java.util.List;
 
@@ -7,8 +7,6 @@ import org.springframework.stereotype.Service;
 
 import br.com.residencia.ecommerce.entity.User;
 import br.com.residencia.ecommerce.repository.UserRepository;
-
-
 
 @Service
 public class UserService {
@@ -52,4 +50,4 @@ public class UserService {
 			return false;
 		}
 	}
-}*/
+}

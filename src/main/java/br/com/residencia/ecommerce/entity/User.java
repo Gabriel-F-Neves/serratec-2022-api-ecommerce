@@ -1,4 +1,4 @@
-/*package br.com.residencia.ecommerce.entity;
+package br.com.residencia.ecommerce.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
@@ -57,4 +58,4 @@ public class User {
 	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
 	}
-}*/
+}

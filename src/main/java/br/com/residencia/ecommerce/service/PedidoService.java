@@ -14,6 +14,9 @@ public class PedidoService {
 	@Autowired
 	PedidoRepository pedidoRepository;
 	
+	@Autowired
+	EmailService emailService;
+	
 	public List<Pedido> getAllPedidos(){
 		return pedidoRepository.findAll();
 	}
@@ -24,6 +27,7 @@ public class PedidoService {
 	}
 	
 	public Pedido savePedido(Pedido pedido) {
+		emailService.sendEmail("g5serratec2022@gmail.com", "Teste de envio de email", "Testando corpo do email");
 		return pedidoRepository.save(pedido);
 	}
 	
